@@ -216,7 +216,7 @@
 [1696](http://hihocoder.com/problemset/problem/1696)|折线中点||
 [1697](http://hihocoder.com/problemset/problem/1697)|最小先序遍历||
 [1698](http://hihocoder.com/problemset/problem/1698)|假期计划||
-[1700](http://hihocoder.com/problemset/problem/1700)|相似颜色||
+[1700](http://hihocoder.com/problemset/problem/1700)|相似颜色|定义递增数和递减数：123，321，222，234<br>    数字要不降或不增<br>    求区间 [L, R] 满足条件的数的个数|
 [1701](http://hihocoder.com/problemset/problem/1701)|挑选子集||
 [1702](http://hihocoder.com/problemset/problem/1702)|矩阵迷宫||
 [1703](http://hihocoder.com/problemset/problem/1703)|第K小先序遍历||
