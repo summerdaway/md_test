@@ -1,9 +1,4 @@
-<style type="text/css">
-table,th,td
-{
-font-size:5px;
-}
-</style>
+<sub>
 |ID | Title | Problem | Solution |
 |:---:|:-:|-|-|
 [1000](http://hihocoder.com/problemset/problem/1000)|A + B|||
@@ -260,3 +255,4 @@ font-size:5px;
 [1765](http://hihocoder.com/problemset/problem/1765)|配对|给n个男生和n个女生，能力值分别为<img src="http://latex.codecogs.com/gif.latex?a_i"/>和<img src="http://latex.codecogs.com/gif.latex?b_i"/>，男生女生能配对要满足<img src="http://latex.codecogs.com/gif.latex?a_i%20%3C%3D%20b_j"/>，求配对成n对的方案数。<img src="http://latex.codecogs.com/gif.latex?n%3C%3D12"/>|f(s, i)表示女生选择的状态为s时，前i个男生可以与她们配对的方案数<br>    f(s, i) = f(t, i-1) (j没在t中选过，t^(1<<j)=s, <img src="http://latex.codecogs.com/gif.latex?a_i%5Cle%20b_j"/>)
 [1766](http://hihocoder.com/problemset/problem/1766)|字符串问题|给一个串S，求从空串变换到S的最小次数，可选操作有两种：<br>    1. 在当前字符串后面添加一个字符<br>    2. 选择当前字符串的一个子序列，接到当前字符串后面<br>    <img src="http://latex.codecogs.com/gif.latex?%7CS%7C%20%5Cle%2010%5E5"/>|贪心。把S从前往后扫一遍，对于当前的字符x，如果x没在前面出现过，那么只能新加字符x。否则就找到x的第一个出现位置 <img src="http://latex.codecogs.com/gif.latex?i_0"/>，接下来看S的下一个字符 y，如果 <img src="http://latex.codecogs.com/gif.latex?i_0"/> 后面出现了 y，就找到第一个出现位置 <img src="http://latex.codecogs.com/gif.latex?i_1"/>，以此类推。也就是找最长的一段，它作为子序列在前面出现过，就把它复制一遍。<br>    做法是记a[i][x]表示i这个位置后面，字符x第一次出现的位置，每次直接跳到这个位置，这样可以做到O(n)的复杂度
 [1767](http://hihocoder.com/problemset/problem/1767)|公共山峰|给两个序列<img src="http://latex.codecogs.com/gif.latex?a_i"/>和<img src="http://latex.codecogs.com/gif.latex?b_j"/>，长度分别为n和m，要找一条波浪c，满足c是a和b的公共子序列。波浪定义是对任意<img src="http://latex.codecogs.com/gif.latex?c_i"/>满足 <img src="http://latex.codecogs.com/gif.latex?c_%7Bi-1%7D%20%3C%20c_i%20%3E%20c_%7Bi%2B1%7D"/> 或 <img src="http://latex.codecogs.com/gif.latex?c_%7Bi-1%7D%20%3E%20c_i%20%3C%20c_%7Bi%2B1%7D"/><br>    <img src="http://latex.codecogs.com/gif.latex?n%2C%20m%20%5Cle%201000"/><br>    <img src="http://latex.codecogs.com/gif.latex?a_i%2C%20b_j%20%5Cle%2010%5E9"/>|f(i, j, t)表示 <img src="http://latex.codecogs.com/gif.latex?a_i"/> 和 <img src="http://latex.codecogs.com/gif.latex?b_j"/> 匹配，t 表示最后一个数是上升还是下降的，最大长度。<img src="http://latex.codecogs.com/gif.latex?f%28i%2C%20j%2C%20t%29%20%3D%20%5Cmax%7Bf%28x%2C%20y%2C%201-t%29%2C%20x%3Ci%2C%20y%3Cj%7D"/><br>    树状数组记T(x, t)，可以求小于x的最大值，O(nmlogn)<br>    （循环时，i 固定，枚举 j，每次查询的都是 <img src="http://latex.codecogs.com/gif.latex?a_i"/>，所以可以不用树状数组记，优化到O(nm)）
+  </sub>
