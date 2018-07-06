@@ -216,7 +216,7 @@
 [1696](http://hihocoder.com/problemset/problem/1696)|折线中点||
 [1697](http://hihocoder.com/problemset/problem/1697)|最小先序遍历||
 [1698](http://hihocoder.com/problemset/problem/1698)|假期计划||
-[1700](http://hihocoder.com/problemset/problem/1700)|相似颜色|定义递增数和递减数：123，321，222，234<br>    数字要不降或不增<br>    求区间 [L, R] 满足条件的数的个数|
+[1700](http://hihocoder.com/problemset/problem/1700)|相似颜色|#40e0d0表示一种颜色，每两个一组，如果两位相同可以简化成一位，例如#639与#663399相同<br>    定义两个颜色#abcdef和#ghijkl的距离<img src="http://latex.codecogs.com/gif.latex?(ab - gh)^2 + (cd - ij)^2 + (ef - kl)^2"/><br>    给一个六位颜色，求与它距离最近的3位颜色|枚举
 [1701](http://hihocoder.com/problemset/problem/1701)|挑选子集||
 [1702](http://hihocoder.com/problemset/problem/1702)|矩阵迷宫||
 [1703](http://hihocoder.com/problemset/problem/1703)|第K小先序遍历||
@@ -253,4 +253,4 @@
 [1764](http://hihocoder.com/problemset/problem/1764)|公平划分||
 [1765](http://hihocoder.com/problemset/problem/1765)|配对||
 [1766](http://hihocoder.com/problemset/problem/1766)|字符串问题||
-[1767](http://hihocoder.com/problemset/problem/1767)|公共山峰||
+[1767](http://hihocoder.com/problemset/problem/1767)|公共山峰|给两个序列<img src="http://latex.codecogs.com/gif.latex?a_i"/>和<img src="http://latex.codecogs.com/gif.latex?b_j"/>，长度分别为n和m，要找一条波浪c，满足c是a和b的公共子序列。波浪定义是对任意<img src="http://latex.codecogs.com/gif.latex?c_i"/>满足 <img src="http://latex.codecogs.com/gif.latex?c_{i-1} < c_i > c_{i+1}"/> 或 <img src="http://latex.codecogs.com/gif.latex?c_{i-1} > c_i < c_{i+1}"/><br>    <img src="http://latex.codecogs.com/gif.latex?n, m \le 1000"/><br>    <img src="http://latex.codecogs.com/gif.latex?a_i, b_j \le 10^9"/>|f(i, j, t)表示 <img src="http://latex.codecogs.com/gif.latex?a_i"/> 和 <img src="http://latex.codecogs.com/gif.latex?b_j"/> 匹配，t 表示最后一个数是上升还是下降的，最大长度。<img src="http://latex.codecogs.com/gif.latex?f(i, j, t) = \max{f(x, y, 1-t), x<i, y<j}"/><br>    树状数组记T(x, t)，可以求小于x的最大值，O(nmlogn)<br>    （循环时，i 固定，枚举 j，每次查询的都是 <img src="http://latex.codecogs.com/gif.latex?a_i"/>，所以可以不用树状数组记，优化到O(nm)）
