@@ -1,53 +1,42 @@
-# -*- coding: utf-8 
-
-import markdown
+import glob
 import os
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
+import re
+import requests as rq
 
-def md2html(mdstr):
-    exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite','markdown.extensions.tables','markdown.extensions.toc']
+web = rq.get('http://hihocoder.com/user/22090/problemset').text
+pat_id = re.compile(u'>#(.*?)\uff1a(.*?)</a>')
+ids = []
+title = {}
+for i in pat_id.findall(web):
+    ids.append(i[0])
+    title[i[0]] = i[1]
+ids = sorted(ids)
 
-    html = '''
-    <html lang="zh-cn">
-    <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <link href="default.css" rel="stylesheet">
-    <link href="github.css" rel="stylesheet">
-    
+files = sorted(glob.glob('../*.cpp') + glob.glob('../*.py'))
+problems = {}
+solutions = {}
 
-     <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-eba6097365.min.css">
-        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-88717cedf2.min.css">
-    </head>
-    <body>
-    %s
-    </body>
-    </html>
-    '''
+pat_problem = re.compile('Problem >_{\s+(.+?)\s+}_<', re.DOTALL)
+pat_solution = re.compile('Solution >_{\s+(.+?)\s+}_<', re.DOTALL)
 
-    ret = markdown.markdown(mdstr,extensions=exts)
-    return html % ret
+for i in files:
+    r = os.path.basename(i).split('.')[0]
+    if r not in ids:
+        continue
+    content = open(i).read()
+    problem = pat_problem.findall(content)
+    if len(problem) > 0:
+        problems[r] = problem[0].replace('\n', '<br>').decode('utf8')
+    solution = pat_solution.findall(content)
+    if len(solution) > 0:
+        solutions[r] = solution[0].replace('\n', '<br>').decode('utf8')
 
+headers = '|ID | Title | Problem | Solution \n|:---:|-|-|:-:\n'
+print headers
 
-
-if __name__ == '__main__':
-
-    if len(sys.argv) < 3:
-        print('usage: md2html source_filename target_file')
-        sys.exit()
-
-    infile = open(sys.argv[1],'r')
-    md = infile.read()
-    infile.close()
-
-    
-    if os.path.exists(sys.argv[2]):
-        os.remove(sys.argv[2])
-
-
-    outfile = open(sys.argv[2],'a')
-    outfile.write(md2html(md))
-    outfile.close()
-
-    print('convert %s to %s success!'%(sys.argv[1],sys.argv[2]))
+f = open('README.md', 'w')
+f.write(headers)
+for r in ids:
+    s = rq.get('http://hihocoder.com/problemset/problem/%s')
+    f.write(('[%s](http://hihocoder.com/problemset/problem/%s)|%s|%s\n' % \
+        (r, r, (r in problems and problems[r]) or '', (r in solutions and solutions[r]) or '')).encode('utf8'))
