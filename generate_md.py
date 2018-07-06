@@ -13,8 +13,8 @@ for i in pat_id.findall(web):
 ids = sorted(ids)
 
 files = sorted(glob.glob('../*.cpp') + glob.glob('../*.py'))
-problems = {}
-solutions = {}
+problems = {i: '' for i in ids}
+solutions = {i: '' for i in ids}
 
 pat_problem = re.compile('Problem >_{\s+(.+?)\s+}_<', re.DOTALL)
 pat_solution = re.compile('Solution >_{\s+(.+?)\s+}_<', re.DOTALL)
@@ -38,5 +38,5 @@ f = open('README.md', 'w')
 f.write(headers)
 for r in ids:
     s = rq.get('http://hihocoder.com/problemset/problem/%s')
-    f.write(('[%s](http://hihocoder.com/problemset/problem/%s)|%s|%s\n' % \
-        (r, r, (r in problems and problems[r]) or '', (r in solutions and solutions[r]) or '')).encode('utf8'))
+    f.write(('[%s](http://hihocoder.com/problemset/problem/%s)|%s|%s|%s\n' % \
+        (r, r, title[r], problems[r], solutions[r])).encode('utf8'))
