@@ -1,8 +1,8 @@
-|ID | Title | Problem | Solution 
-|:---:|:-:|-|-
-[1000](http://hihocoder.com/problemset/problem/1000)|A + B||
-[1014](http://hihocoder.com/problemset/problem/1014)|Trie树||
-[1015](http://hihocoder.com/problemset/problem/1015)|KMP算法||
+|ID | Title | Problem | Solution |
+|:---:|:-:|-|-|
+[1000](http://hihocoder.com/problemset/problem/1000)|A + B|||
+[1014](http://hihocoder.com/problemset/problem/1014)|Trie树|||
+[1015](http://hihocoder.com/problemset/problem/1015)|KMP算法|||
 [1032](http://hihocoder.com/problemset/problem/1032)|最长回文子串||
 [1033](http://hihocoder.com/problemset/problem/1033)|Alternating Sums||
 [1036](http://hihocoder.com/problemset/problem/1036)|Trie图||
