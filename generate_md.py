@@ -2,6 +2,7 @@ import glob
 import os
 import re
 import requests as rq
+import urllib
 
 web = rq.get('http://hihocoder.com/user/22090/problemset').text
 pat_id = re.compile(u'>#(.*?)\uff1a(.*?)</a>')
@@ -25,7 +26,7 @@ def get_markdown(content, pat, pat_latex):
     if len(results) == 0:
         return ''
     ret = results[0].replace('\n', '<br>').decode('utf8')
-    ret = pat_latex.sub(r'<img src="http://latex.codecogs.com/gif.latex?\1"/>', ret)
+    ret = pat_latex.sub(lambda x: '<img src="http://latex.codecogs.com/gif.latex?%s"/>' % urllib.quote(x.groups()[0].encode('utf8')), ret)
     return ret
 
 for i in files:
