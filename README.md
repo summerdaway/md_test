@@ -114,7 +114,7 @@
 [1331](http://hihocoder.com/problemset/problem/1331)|Biinary Numbers||
 [1332](http://hihocoder.com/problemset/problem/1332)|Basic Arithmetic Calculator||
 [1334](http://hihocoder.com/problemset/problem/1334)|Word Construction||
-[1335](http://hihocoder.com/problemset/problem/1335)|Email Merge|给$n$个名字，每个名字下有多个邮箱，合并邮箱相同的名字<br>    n<=10000, 每人最多10个邮箱|并查集
+[1335](http://hihocoder.com/problemset/problem/1335)|Email Merge|给<img src="http://latex.codecogs.com/gif.latex?n"/>个名字，每个名字下有多个邮箱，合并邮箱相同的名字<br>    <img src="http://latex.codecogs.com/gif.latex?n\le10000"/>, 每人最多10个邮箱|并查集
 [1338](http://hihocoder.com/problemset/problem/1338)|A Game||
 [1339](http://hihocoder.com/problemset/problem/1339)|Dice Possibility||
 [1349](http://hihocoder.com/problemset/problem/1349)|Nature Numbers||

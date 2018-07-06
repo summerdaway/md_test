@@ -18,18 +18,23 @@ solutions = {i: '' for i in ids}
 
 pat_problem = re.compile('Problem >_{\s+(.+?)\s+}_<', re.DOTALL)
 pat_solution = re.compile('Solution >_{\s+(.+?)\s+}_<', re.DOTALL)
+pat_latex = re.compile('\$(.*?)\$')
+
+def get_markdown(content, pat, pat_latex):
+    results = pat.findall(content)
+    if len(results) == 0:
+        return ''
+    ret = results[0].replace('\n', '<br>').decode('utf8')
+    ret = pat_latex.sub(r'<img src="http://latex.codecogs.com/gif.latex?\1"/>', ret)
+    return ret
 
 for i in files:
     r = os.path.basename(i).split('.')[0]
     if r not in ids:
         continue
     content = open(i).read()
-    problem = pat_problem.findall(content)
-    if len(problem) > 0:
-        problems[r] = problem[0].replace('\n', '<br>').decode('utf8')
-    solution = pat_solution.findall(content)
-    if len(solution) > 0:
-        solutions[r] = solution[0].replace('\n', '<br>').decode('utf8')
+    problems[r] = get_markdown(content, pat_problem, pat_latex)
+    solutions[r] = get_markdown(content, pat_solution, pat_latex)
 
 headers = '|ID | Title | Problem | Solution \n|:---:|-|-|:-:\n'
 print headers
