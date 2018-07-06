@@ -36,7 +36,7 @@ for i in files:
     problems[r] = get_markdown(content, pat_problem, pat_latex)
     solutions[r] = get_markdown(content, pat_solution, pat_latex)
 
-headers = '|ID | Title | Problem | Solution \n|:---:|-|-|:-:\n'
+headers = '|ID | Title | Problem | Solution \n|:---:|:-:|-|-\n'
 print headers
 
 f = open('README.md', 'w')

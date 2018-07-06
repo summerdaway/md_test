@@ -1,5 +1,5 @@
 |ID | Title | Problem | Solution 
-|:---:|-|-|:-:
+|:---:|:-:|-|-
 [1000](http://hihocoder.com/problemset/problem/1000)|A + B||
 [1014](http://hihocoder.com/problemset/problem/1014)|Trie树||
 [1015](http://hihocoder.com/problemset/problem/1015)|KMP算法||
@@ -132,7 +132,7 @@
 [1377](http://hihocoder.com/problemset/problem/1377)|设计LRU Cache||
 [1378](http://hihocoder.com/problemset/problem/1378)|网络流二·最大流最小割定理||
 [1379](http://hihocoder.com/problemset/problem/1379)|Emulator||
-[1380](http://hihocoder.com/problemset/problem/1380)|Certificate||
+[1380](http://hihocoder.com/problemset/problem/1380)|Certificate|给一个n和<img src="http://latex.codecogs.com/gif.latex?2^n"/>个数，每个数表示 <img src="http://latex.codecogs.com/gif.latex?f(x), x\in {0, 1}^n"/><br>    定义0-certificate：<br>    如果f(x) = 0，0-certificate是x的0/1取值的一个子集，只定下这个子集的取值，就可以确定 f 值为0。就是将 x 里某些值固定，其他值随便取，怎么取 f 值都是0<br>    1-certificate同理<br>    现在对每个x，求最短的0/1-certificate长度（如果f(x)=0求0-certificate，否则求1-certificate）|先求<img src="http://latex.codecogs.com/gif.latex?f(x)，x\in {0, 1, 2}^n"/>，<img src="http://latex.codecogs.com/gif.latex?x_i=2"/>表示这一位随便取，其他两个表示就取那个值。f(x)表示取值为x的情况下，原来给的取值是什么。f(x)=1,2,3表示只会取0、只会取1、0和1都能取到。f(x, i, 0) | f(x, i, 1) -> f(x, i, 2)，就是对x枚举它确定取值的所有位置，将这个位置为0和1的取值转移给随便取的。所以更新的时候，x一定往比它大的更新，所以从0到N枚举就可以。<br>    然后求g(x), 表示取值为x情况下，最短的certificate是多长。那么如果f(x)不是3，g(x)就等于它确定了取值的那些位的个数。g(x, i, 0) <- g(x), g(x, i, 1) <- g(x)，枚举值为2的那些位置，转移给取0或者取1。从N枚举到0.
 [1399](http://hihocoder.com/problemset/problem/1399)|Shortening Sequence||
 [1400](http://hihocoder.com/problemset/problem/1400)|Composition||
 [1404](http://hihocoder.com/problemset/problem/1404)|Five in a Row||
@@ -181,7 +181,7 @@
 [1571](http://hihocoder.com/problemset/problem/1571)|小Hi与钢铁侠||
 [1590](http://hihocoder.com/problemset/problem/1590)|紧张的会议室||
 [1595](http://hihocoder.com/problemset/problem/1595)|Numbers||
-[1599](http://hihocoder.com/problemset/problem/1599)|逃离迷宫4||
+[1599](http://hihocoder.com/problemset/problem/1599)|逃离迷宫4|二维格子，你在位置(x, y)，出口在(a, b)，每次只能走到(x+y, y)或(x, y+x)，问能不能走出去，范围10^9|对(a, b)求gcd，求的过程，(a, b, x, y)，如果a减去若干个b可以得到x，那么继续算(x, b)，否则算(a%b, b)，注意交换a和b时同时交换x和y
 [1610](http://hihocoder.com/problemset/problem/1610)|座位安排计划||
 [1618](http://hihocoder.com/problemset/problem/1618)|单词接龙||
 [1623](http://hihocoder.com/problemset/problem/1623)|有歧义的号码||
@@ -209,7 +209,7 @@
 [1688](http://hihocoder.com/problemset/problem/1688)|LR问题||
 [1689](http://hihocoder.com/problemset/problem/1689)|推断大小关系||
 [1690](http://hihocoder.com/problemset/problem/1690)|AEIOU||
-[1691](http://hihocoder.com/problemset/problem/1691)|数字游戏||
+[1691](http://hihocoder.com/problemset/problem/1691)|数字游戏|给长度为n的两个数a和b，两种操作：<br>    1. 将x变成y，代价是x按顺序数到y，例如0->1代价是1，9->2代价是3，3->5代价是2<br>    2. 交换两个数，代价是1<br>    <img src="http://latex.codecogs.com/gif.latex?n\le 10"/>|枚举所有交换的permutation，直接计算<br>    注意不要漏掉permutation自己的代价<br>    搜索会超时
 [1693](http://hihocoder.com/problemset/problem/1693)|逆序异或和||
 [1694](http://hihocoder.com/problemset/problem/1694)|删除树节点||
 [1695](http://hihocoder.com/problemset/problem/1695)|公平分队II||
@@ -225,7 +225,7 @@
 [1707](http://hihocoder.com/problemset/problem/1707)|麻烦的第K大问题||
 [1708](http://hihocoder.com/problemset/problem/1708)|灯光控制||
 [1711](http://hihocoder.com/problemset/problem/1711)|评论框排版||
-[1715](http://hihocoder.com/problemset/problem/1715)|树的连通问题||
+[1715](http://hihocoder.com/problemset/problem/1715)|树的连通问题|一棵编号1~n的树，Tree[L, R]表示覆盖编号在[L, R]的所有点，需要的最少边数，求<br>    <img src="http://latex.codecogs.com/gif.latex?\sum_{L=1}^n \sum_{R=L}^n Tree[L, R]"/><br>    <img src="http://latex.codecogs.com/gif.latex?n\le 100000"/>|<img src="http://latex.codecogs.com/gif.latex?n^2"/>暴力：枚举点 i 作为树的根，dfs(i)，然后枚举 [i, n]，对于当前 j ，将 j, fa[j], fa[fa[j]]… 到根 i 的一路上的边加入，碰到加过的就停止<br><br>    nlogn：n个点形成的区间个数为 n(n-1)/2，树共有 n-1 条边，如果所有区间都用到所有的边，总共有n(n-1)^2/2条边。<br>    任选一个点作为根建树，考虑 (i, fa[i]) 这条边，有多少个区间不选它。以 i 为根的子树的编号形成了很多个区间 [l_1, r_1], [l_2, r_2] …这些区间内部的区间不需要用到 (i, fa[i])，并且这些区间的间隙 ([r_1+1, l2-1]…) 也不需要用到 (i, fa[i])。<br>    那么对一个点 i，记录以 i 为根的子树编号的区间集合 s ，和用不到 (i, fa[i]) 这条边的区间个数 ans[i]<br>    每次对点 i，选它最重的儿子不动，把其他儿子的集合合并到最重的儿子上，合并时，当前要插入的区间 [l, r] 将原来集合里的某个间隙切开了<br>    1. 先减掉这个间隙的区间个数<br>    2. 判断是否可以和左边、右边的区间接上，如果能接上，要删除原来的区间，并减掉这段的区间个数，否则加上新形成的间隙的区间个数<br>    3. 加上当前区间的区间个数<br>    注意<br>    1. 对点 i 合并时，需要将 i 也合并进去，可以在 i 的邻接表里加入 i，s[i]={i}，将s[i]当成儿子合并，可以简化代码<br>    2. 集合里记录区间，而不是区间端点，更不容易出问题<br>    3. 可以bfs就不要dfs，会爆堆栈<br>    4. 更新答案的时候先想好，不然很容错
 [1720](http://hihocoder.com/problemset/problem/1720)|小数数字||
 [1721](http://hihocoder.com/problemset/problem/1721)|回文字符串2||
 [1722](http://hihocoder.com/problemset/problem/1722)|最小差值||
@@ -250,7 +250,7 @@
 [1761](http://hihocoder.com/problemset/problem/1761)|洗牌||
 [1762](http://hihocoder.com/problemset/problem/1762)|密码更改||
 [1763](http://hihocoder.com/problemset/problem/1763)|道路摧毁||
-[1764](http://hihocoder.com/problemset/problem/1764)|公平划分||
-[1765](http://hihocoder.com/problemset/problem/1765)|配对||
-[1766](http://hihocoder.com/problemset/problem/1766)|字符串问题||
+[1764](http://hihocoder.com/problemset/problem/1764)|公平划分|给n个数，要划分成两个集合A和B，满足A中数的异或和等于B中数的异或和，求划分的方法数，A和B都不能为空。<img src="http://latex.codecogs.com/gif.latex?n\le50"/>|观察一下可以知道n个数的异或和必须为0，然后随意划分，两个集合不为空就可以<br>    如果n个数异或和不为0，那么答案是0<br>    否则考虑集合A，有<img src="http://latex.codecogs.com/gif.latex?2^n-2"/>（减去空集和全集）种选择
+[1765](http://hihocoder.com/problemset/problem/1765)|配对|给n个男生和n个女生，能力值分别为<img src="http://latex.codecogs.com/gif.latex?a_i"/>和<img src="http://latex.codecogs.com/gif.latex?b_i"/>，男生女生能配对要满足<img src="http://latex.codecogs.com/gif.latex?a_i <= b_j"/>，求配对成n对的方案数。<img src="http://latex.codecogs.com/gif.latex?n<=12"/>|f(s, i)表示女生选择的状态为s时，前i个男生可以与她们配对的方案数<br>    f(s, i) = f(t, i-1) (j没在t中选过，t^(1<<j)=s, <img src="http://latex.codecogs.com/gif.latex?a_i\le b_j"/>)
+[1766](http://hihocoder.com/problemset/problem/1766)|字符串问题|给一个串S，求从空串变换到S的最小次数，可选操作有两种：<br>    1. 在当前字符串后面添加一个字符<br>    2. 选择当前字符串的一个子序列，接到当前字符串后面<br>    <img src="http://latex.codecogs.com/gif.latex?|S| \le 10^5"/>|贪心。把S从前往后扫一遍，对于当前的字符x，如果x没在前面出现过，那么只能新加字符x。否则就找到x的第一个出现位置 <img src="http://latex.codecogs.com/gif.latex?i_0"/>，接下来看S的下一个字符 y，如果 <img src="http://latex.codecogs.com/gif.latex?i_0"/> 后面出现了 y，就找到第一个出现位置 <img src="http://latex.codecogs.com/gif.latex?i_1"/>，以此类推。也就是找最长的一段，它作为子序列在前面出现过，就把它复制一遍。<br>    做法是记a[i][x]表示i这个位置后面，字符x第一次出现的位置，每次直接跳到这个位置，这样可以做到O(n)的复杂度
 [1767](http://hihocoder.com/problemset/problem/1767)|公共山峰|给两个序列<img src="http://latex.codecogs.com/gif.latex?a_i"/>和<img src="http://latex.codecogs.com/gif.latex?b_j"/>，长度分别为n和m，要找一条波浪c，满足c是a和b的公共子序列。波浪定义是对任意<img src="http://latex.codecogs.com/gif.latex?c_i"/>满足 <img src="http://latex.codecogs.com/gif.latex?c_{i-1} < c_i > c_{i+1}"/> 或 <img src="http://latex.codecogs.com/gif.latex?c_{i-1} > c_i < c_{i+1}"/><br>    <img src="http://latex.codecogs.com/gif.latex?n, m \le 1000"/><br>    <img src="http://latex.codecogs.com/gif.latex?a_i, b_j \le 10^9"/>|f(i, j, t)表示 <img src="http://latex.codecogs.com/gif.latex?a_i"/> 和 <img src="http://latex.codecogs.com/gif.latex?b_j"/> 匹配，t 表示最后一个数是上升还是下降的，最大长度。<img src="http://latex.codecogs.com/gif.latex?f(i, j, t) = \max{f(x, y, 1-t), x<i, y<j}"/><br>    树状数组记T(x, t)，可以求小于x的最大值，O(nmlogn)<br>    （循环时，i 固定，枚举 j，每次查询的都是 <img src="http://latex.codecogs.com/gif.latex?a_i"/>，所以可以不用树状数组记，优化到O(nm)）
