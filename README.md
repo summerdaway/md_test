@@ -1,3 +1,9 @@
+<style type="text/css">
+table,th,td
+{
+font-size:5px;
+}
+</style>
 |ID | Title | Problem | Solution |
 |:---:|:-:|-|-|
 [1000](http://hihocoder.com/problemset/problem/1000)|A + B|||
